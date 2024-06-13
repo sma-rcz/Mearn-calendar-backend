@@ -3,7 +3,7 @@ const express = require('express'); //this using library that is recharged
 const  bcript = require('bcryptjs');
 const Usuario = require('../models/Usuario');
 const {generateJWT } =  require('../helpers/jwt');
- 
+
 
 
 //Note: Is care  remembered that  req is the that people want to solcitude
@@ -137,6 +137,8 @@ const reValidationToken = async (req, res = express.response) => {
         //  res.send('Hello World');
         res.json({
             success: true,
+            uid,
+            name,
             token
         });
 
