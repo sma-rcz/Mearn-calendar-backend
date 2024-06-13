@@ -1,3 +1,5 @@
+const path = require('path');
+
 const express = require('express');
 require('dotenv').config();
 
@@ -29,6 +31,10 @@ app.use(express.json());
 //Rutes  //endpoints
 app.use('/api/auth' , require('./routes/auth')); //all files  exports from /routes/auth ability to /api/auth
 app.use('/api/events' , require('./routes/events')); //all files  exports from /routes/events ability to /api/events
+
+app.use('*' , (req, res) => {
+    res.sendFile( path.join(__dirname, 'public/index.html'));
+});
 
 //hearing peticious
 app.listen(process.env.PORT, () => {
